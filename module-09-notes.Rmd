@@ -1,0 +1,29 @@
+---
+title: "module-09-notes"
+---
+# 5 number summary: 
+### the sample minimum: value of the smallest observation
+### the lower or first quartile
+### the median: middle value in the distribution of obs.
+### the upper quartile
+### the sample maximum: the largest value obs.
+### * also the mean/arithmetic average*!!
+
+### attach() function can be used on a dataframe to make variables accessible without using $ or [[]] or []
+### detach() should be used after done with dataframe
+
+```{r}
+library(tidyverse)
+f <-"C:/Users/maxma/Downloads/Country-Data-2016.csv"
+d <- read_csv(f, col_names = TRUE)
+names(d)
+attach(d)
+nrow(d)
+ncol(d)
+count(unique(d[, "country"])) #OR length(unique(d$country))
+summary(d)
+median(d$population, na.rm = TRUE)
+median(d$area, na.rm = TRUE)
+d$density<- d$population/d$area #OR d<- d|>mutate(density=population/area) OR density<- d$population/d$area d<- cbind(d, density)
+
+```
